@@ -1,4 +1,4 @@
-package fr.diginamic.entités;
+package fr.diginamic.entite;
 
 import jakarta.persistence.*;
 import java.util.Date;
@@ -7,7 +7,7 @@ import java.util.Date;
 public class Emprunt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
@@ -23,11 +23,11 @@ public class Emprunt {
     @JoinColumn(name = "ID_CLIENT", nullable = true)
     private Client client;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

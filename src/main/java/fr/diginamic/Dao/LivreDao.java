@@ -1,6 +1,6 @@
 package fr.diginamic.Dao;
 
-import fr.diginamic.entités.Livre;
+import fr.diginamic.entite.Livre;
 import jakarta.persistence.EntityManager;
 
 public class LivreDao {
@@ -10,7 +10,7 @@ public class LivreDao {
         this.em = em;
     }
 
-    public Livre findById(Long id) {
+    public Livre findById(int id) {
         return em.find(Livre.class, id);
     }
 }

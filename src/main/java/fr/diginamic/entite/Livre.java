@@ -1,4 +1,4 @@
-package fr.diginamic.entités;
+package fr.diginamic.entite;
 
 import jakarta.persistence.*;
 
@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Livre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(nullable = false)
     private String titre;
@@ -30,11 +30,7 @@ public class Livre {
         this.auteur = auteur;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }

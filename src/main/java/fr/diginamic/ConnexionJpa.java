@@ -1,7 +1,7 @@
 package fr.diginamic;
 
 import fr.diginamic.Dao.LivreDao;
-import fr.diginamic.entités.Livre;
+import fr.diginamic.entite.Livre;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -14,13 +14,13 @@ public class ConnexionJpa {
 
         // Utilise le DAO pour récupérer un livre par son ID
         LivreDao livreDao = new LivreDao(em);
-        Livre livre = livreDao.findById(1L);
+        Livre livre = livreDao.findById(3);
         if (livre != null) {
-            System.out.println("Livre found with ID: " + livre.getId());
+            System.out.println("Livre trouvé avec ID: " + livre.getId());
             System.out.println("Titre: " + livre.getTitre());
             System.out.println("Auteur: " + livre.getAuteur());
         } else {
-            System.out.println("Livre not found.");
+            System.out.println("Pas de livre trouvé.");
         }
 
         // Fermeture de l'EntityManager et de l'EntityManagerFactory

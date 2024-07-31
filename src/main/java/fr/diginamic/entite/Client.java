@@ -1,4 +1,4 @@
-package fr.diginamic.entités;
+package fr.diginamic.entite;
 
 import jakarta.persistence.*;
 
@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(nullable = false)
     private String nom;
@@ -28,5 +28,9 @@ public class Client {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public int getId() {
+        return id;
     }
 }
