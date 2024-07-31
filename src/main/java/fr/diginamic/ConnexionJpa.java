@@ -21,7 +21,8 @@ public class ConnexionJpa {
         } else {
             System.out.println("Pas de livre trouvé.");
         }
-
+        System.out.println(em);
+        System.out.println(emf);
         // Fermeture de l'EntityManager et de l'EntityManagerFactory
         em.close();
         emf.close();
