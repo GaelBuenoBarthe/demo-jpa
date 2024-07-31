@@ -8,11 +8,9 @@ import jakarta.persistence.Persistence;
 
 public class ConnexionJpa {
     public static void main(String[] args) {
-        // Creation de l'EntityManagerFactory et de l'EntityManager
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("demoJpa");
         EntityManager em = emf.createEntityManager();
 
-        // Utilise le DAO pour récupérer un livre par son ID
         LivreDao livreDao = new LivreDao(em);
         Livre livre = livreDao.findById(3);
         if (livre != null) {
@@ -23,7 +21,7 @@ public class ConnexionJpa {
         }
         System.out.println(em);
         System.out.println(emf);
-        // Fermeture de l'EntityManager et de l'EntityManagerFactory
+
         em.close();
         emf.close();
     }
