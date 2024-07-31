@@ -16,9 +16,8 @@ public class ConnexionJpa {
         LivreDao livreDao = new LivreDao(em);
         Livre livre = livreDao.findById(3);
         if (livre != null) {
-            System.out.println("Livre trouvé avec ID: " + livre.getId());
-            System.out.println("Titre: " + livre.getTitre());
-            System.out.println("Auteur: " + livre.getAuteur());
+            System.out.println("Le livre trouvé avec l'ID " + livre.getId() + " est " + livre.getTitre() + " de "
+                    + livre.getAuteur() + ".");
         } else {
             System.out.println("Pas de livre trouvé.");
         }
