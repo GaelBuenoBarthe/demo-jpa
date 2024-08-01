@@ -1,6 +1,9 @@
 package fr.diginamic;
 
-import fr.diginamic.Dao.LivreDao;
+import fr.diginamic.Dao.ClientDao;
+import fr.diginamic.entite.Client;
+import fr.diginamic.entite.Compo;
+import fr.diginamic.entite.Emprunt;
 import fr.diginamic.entite.Livre;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -11,16 +14,19 @@ public class ConnexionJpa {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("demoJpa");
         EntityManager em = emf.createEntityManager();
 
-        LivreDao livreDao = new LivreDao(em);
-        Livre livre = livreDao.findById(3);
-        if (livre != null) {
-            System.out.println("Le livre trouvé avec l'ID " + livre.getId() + " est " + livre.getTitre() + " de "
-                    + livre.getAuteur() + ".");
+        ClientDao clientDao = new ClientDao(em);
+
+        Emprunt emprunt = clientDao.findEmpruntById(1);
+        if (emprunt != null) {
+            Client client = emprunt.getClient();
+            for (Compo compo : emprunt.getCompos()) {
+                Livre livre = compo.getLivre();
+                System.out.println("Emprunt avec id " + emprunt.getId() + " fait par " + client.getNom() + " " + client.getPrenom() +
+                        " avec le livre " + livre.getTitre() + " de " + livre.getAuteur() + " le " + emprunt.getDateDebut());
+            }
         } else {
-            System.out.println("Pas de livre trouvé.");
+            System.out.println("Pas d'emprunt trouvé pour l'ID 1");
         }
-        System.out.println(em);
-        System.out.println(emf);
 
         em.close();
         emf.close();

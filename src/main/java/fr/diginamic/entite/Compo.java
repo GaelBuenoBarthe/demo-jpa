@@ -4,35 +4,29 @@ import jakarta.persistence.*;
 
 @Entity
 public class Compo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @EmbeddedId
+    private CompoId id;
 
     @ManyToOne
-    @JoinColumn(name = "ID_LIVRE", nullable = false)
-    private Livre livre;
-
-    @ManyToOne
-    @JoinColumn(name = "ID_EMPRUNT", nullable = false)
+    @MapsId("idEmp")
+    @JoinColumn(name = "ID_EMP", nullable = false)
     private Emprunt emprunt;
 
-    public int getId() {
+    @ManyToOne
+    @MapsId("idLiv")
+    @JoinColumn(name = "ID_LIV", nullable = false)
+    private Livre livre;
+
+    public CompoId getId() {
         return id;
-    }
-
-    public Livre getLivre() {
-        return livre;
-    }
-
-    public void setLivre(Livre livre) {
-        this.livre = livre;
     }
 
     public Emprunt getEmprunt() {
         return emprunt;
     }
 
-    public void setEmprunt(Emprunt emprunt) {
-        this.emprunt = emprunt;
+    public Livre getLivre() {
+        return livre;
     }
+
 }
