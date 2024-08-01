@@ -1,7 +1,7 @@
 package fr.diginamic.entite;
 
 import jakarta.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Client {
@@ -10,14 +10,14 @@ public class Client {
     @Column(name = "ID")
     private int id;
 
-    @Column(name = "NOM" ,nullable = false)
+    @Column(name = "NOM", nullable = false)
     private String nom;
 
-    @Column(name = "PRENOM" ,nullable = false)
+    @Column(name = "PRENOM", nullable = false)
     private String prenom;
 
     @OneToMany(mappedBy = "client")
-    private List<Emprunt> emprunts;
+    private Set<Emprunt> emprunts;
 
     public int getId() {
         return id;
@@ -31,12 +31,23 @@ public class Client {
         return nom;
     }
 
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
     public String getPrenom() {
         return prenom;
     }
 
-    public List<Emprunt> getEmprunts() {
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public Set<Emprunt> getEmprunts() {
         return emprunts;
     }
 
+    public void setEmprunts(Set<Emprunt> emprunts) {
+        this.emprunts = emprunts;
+    }
 }

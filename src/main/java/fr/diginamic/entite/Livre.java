@@ -1,7 +1,7 @@
 package fr.diginamic.entite;
 
 import jakarta.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Livre {
@@ -17,22 +17,37 @@ public class Livre {
     private String auteur;
 
     @OneToMany(mappedBy = "livre")
-    private List<Compo> compos;
+    private Set<Compo> compos;
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitre() {
         return titre;
     }
 
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
     public String getAuteur() {
         return auteur;
     }
 
-    public List<Compo> getCompos() {
+    public void setAuteur(String auteur) {
+        this.auteur = auteur;
+    }
+
+    public Set<Compo> getCompos() {
         return compos;
     }
 
+    public void setCompos(Set<Compo> compos) {
+        this.compos = compos;
+    }
 }
